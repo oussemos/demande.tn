@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="<?php echo $this->conf->language (); ?>" xml:lang="<?php echo $this->conf->language (); ?>">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="initial-scale=1.0" />
+		<title>Demande.tn</title>
+		<META NAME="description" CONTENT="Agrégateur d'offres d'emplois en Tunisie, Agrégateur de news en Tunisie">
+		<META NAME="keywords" CONTENT="Flux, RSS, Agrégateur, agregator, news, emplois, jobs, Tunisie, Tunis, Tanitjob, TunisieTravail, keejob, demande, demande Tunisie, Travail, hightechs">
+		<?php echo self::headTitle (); ?>
+		<?php echo self::headStyle (); ?>
+		<?php echo self::headScript (); ?>
+		<script>//<![CDATA[
+<?php $this->renderHelper ('javascript_vars'); ?>
+		//]]></script>
+<?php
+	$next = isset($this->entryPaginator) ? $this->entryPaginator->next() : '';
+	if (!empty($next)) {
+		$params = Request::params ();
+		$params['next'] = $next;
+?>
+		<link id="prefetch" rel="next prefetch" href="<?php echo Url::display (array ('c' => Request::controllerName (), 'a' => Request::actionName (), 'params' => $params)); ?>" />
+<?php } ?>
+		<link rel="icon" href="<?php echo Url::display ('/favicon.ico'); ?>" />
+<?php if (isset ($this->rss_url)) { ?>
+		<link rel="alternate" type="application/rss+xml" title="<?php echo htmlspecialchars($this->rss_title, ENT_COMPAT, 'UTF-8'); ?>" href="<?php echo Url::display ($this->rss_url); ?>" />
+<?php } ?>
+	</head>
+	<body>
+<?php $this->partial ('header'); ?>
+
+<div id="global">
+	<?php $this->render (); ?>
+</div>
+
+<?php
+	if (isset ($this->notification)) {
+		touch(PUBLIC_PATH . '/data/touch.txt', time() + 1);
+?>
+<div class="notification <?php echo $this->notification['type']; ?>">
+	<?php echo $this->notification['content']; ?>
+	<a class="close" href=""><i class="icon i_close"></i></a>
+</div>
+<?php } ?>
+	</body>
+</html>

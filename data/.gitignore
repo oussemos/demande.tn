@@ -1,0 +1,5 @@
+application.ini
+*_user.php
+*.sqlite
+touch.txt
+no-cache.txt

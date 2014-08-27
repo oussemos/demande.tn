@@ -1,0 +1,10 @@
+<div class="nav nav-list aside">
+	<li class="nav-header"><?php echo Translate::t ('configuration'); ?></li>
+
+	<li class="item<?php echo Request::actionName () == 'display' ? ' active' : ''; ?>">
+		<a href="<?php echo Url::display (array ('c' => 'configure', 'a' => 'display')); ?>"><?php echo Translate::t ('general_and_reading'); ?></a>
+	</li>
+	<li class="item<?php echo Request::actionName () == 'shortcut' ? ' active' : ''; ?>">
+		<a href="<?php echo Url::display (array ('c' => 'configure', 'a' => 'shortcut')); ?>"><?php echo Translate::t ('shortcuts'); ?></a>
+	</li>
+</div>
