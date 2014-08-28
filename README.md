@@ -8,7 +8,7 @@ Configuration
 =============
 
 
-Sous /data il faudra ajouter un fichier application.ini contenant les lignes ci-dessous
+Under /data you should add a new file called application.ini
 
 ~~~~
 [general]
@@ -26,3 +26,8 @@ password = "password"
 base = "database"
 prefix = "freshrss_"
 ~~~~
+
+Database
+========
+
+Ask for it
