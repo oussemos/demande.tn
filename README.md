@@ -30,4 +30,4 @@ prefix = "freshrss_"
 Database
 ========
 
-Ask for it
+demande_dev.sql
